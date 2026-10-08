@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 — unreleased
+## 0.1.0 — 2026-10-08
 
 - Watch and embed URLs for videos, playlists, broadcasts and 24/7 channels; private-link secret, start time, playlist item.
 - Embed code (responsive or fixed) identical to the console’s; `mount()`.
