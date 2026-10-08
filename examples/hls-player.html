@@ -1,0 +1,13 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>dodocast — your own player</title>
+<video id="v" controls playsinline style="width:100%;max-width:960px"></video>
+<script type="module">
+  import Hls from 'https://esm.sh/hls.js@1'
+  import { streamUrl } from '../dist/index.js'
+  // Public content plays from a bare URL. Private content: get a signed URL from your server (examples/sign-link.mjs).
+  const src = streamUrl({ kind: 'video', code: 'abc123XYZ0' })
+  const v = document.getElementById('v')
+  if (v.canPlayType('application/vnd.apple.mpegurl')) v.src = src
+  else if (Hls.isSupported()) { const hls = new Hls(); hls.loadSource(src); hls.attachMedia(v) }
+</script>

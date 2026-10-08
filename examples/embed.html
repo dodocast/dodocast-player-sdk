@@ -1,0 +1,11 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>dodocast — embed</title>
+<style>body{font-family:system-ui;max-width:960px;margin:40px auto;padding:0 16px}</style>
+<h1>Embedded dodocast player</h1>
+<div id="player"></div>
+<script type="module">
+  // Build first: npm run build. Then serve the repo root: npx http-server . and open /examples/embed.html
+  import { mount } from '../dist/index.js'
+  mount('#player', { kind: 'video', code: 'abc123XYZ0', start: 30 })  // your video code
+</script>

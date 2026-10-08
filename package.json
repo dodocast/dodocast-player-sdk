@@ -1,0 +1,48 @@
+{
+  "name": "@dodocast/player",
+  "version": "0.1.0",
+  "description": "Embed the dodocast player, build stream URLs, read 24/7 channel data and sign private links.",
+  "type": "module",
+  "license": "MIT",
+  "author": "dodocast <hello@dodocast.com>",
+  "homepage": "https://dodocast.com/solutions/player-embed/",
+  "keywords": [
+    "dodocast",
+    "video",
+    "player",
+    "embed",
+    "hls",
+    "24/7 channel",
+    "epg",
+    "signed urls",
+    "jwt"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "default": "./dist/server.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^5.9.3"
+  }
+}

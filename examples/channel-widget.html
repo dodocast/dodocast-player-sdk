@@ -1,0 +1,32 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>dodocast — channel widget</title>
+<style>
+  body{font-family:system-ui;max-width:640px;margin:40px auto;padding:0 16px}
+  .bar{height:6px;background:#e4e6ef;border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;background:#c93ad6}
+  li{margin:4px 0}
+</style>
+<h1 id="title">Channel</h1>
+<p><b>Now:</b> <span id="now">—</span></p>
+<div class="bar"><i id="progress" style="width:0"></i></div>
+<p><b>Next:</b> <span id="next">—</span></p>
+<h2>Program</h2>
+<ul id="guide"></ul>
+<script type="module">
+  import { getChannelState, getChannelGuide, progress } from '../dist/index.js'
+  const CODE = 'CHxYz12345'  // your channel code
+
+  async function tick() {
+    const s = await getChannelState(CODE)
+    document.getElementById('title').textContent = s.title ?? 'Channel'
+    document.getElementById('now').textContent = s.state === 'ON' ? (s.currentShow?.title ?? s.currentItem?.title ?? '—') : 'Off air'
+    document.getElementById('next').textContent = s.nextShow?.title ?? s.nextItem?.title ?? '—'
+    document.getElementById('progress').style.width = `${progress(s, s.currentShow ?? s.currentItem) * 100}%`
+  }
+  const guide = await getChannelGuide(CODE)
+  document.getElementById('guide').innerHTML = guide
+    .map(e => `<li>${new Date(e.startsAtMs).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} — ${e.title ?? ''}</li>`)
+    .join('')
+  await tick()
+  setInterval(tick, 15000)
+</script>
