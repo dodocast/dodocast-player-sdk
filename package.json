@@ -5,7 +5,7 @@
   "type": "module",
   "license": "MIT",
   "author": "dodocast <hello@dodocast.com>",
-  "homepage": "https://dodocast.com/solutions/player-embed/",
+  "homepage": "https://github.com/dodocast/dodocast-player-sdk#readme",
   "keywords": [
     "dodocast",
     "video",
@@ -39,10 +39,19 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "npm run build && node --test test/*.test.mjs"
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepublishOnly": "npm test"
   },
   "devDependencies": {
     "@types/node": "^26.6.4",
     "typescript": "^5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dodocast/dodocast-player-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dodocast/dodocast-player-sdk/issues",
+    "email": "hello@dodocast.com"
   }
 }

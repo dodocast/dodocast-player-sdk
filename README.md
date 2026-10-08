@@ -106,6 +106,8 @@ To keep your expectations right, this is what the player and the SDK **do not** 
 
 By default links point at `https://watch.dodocast.com` (watch pages and embeds) and `https://stream.dodocast.com` (streams and channel data). Every function takes `hosts: { watch, stream }` if you need others.
 
+> dodocast is in early access: these public hosts go live with the launch. Until then pass the hosts you were given with your early-access account.
+
 ## Docs
 
 - [Embedding](docs/embed.md)
